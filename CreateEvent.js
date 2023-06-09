@@ -1,5 +1,6 @@
 // Constantes
 const categorias = [
+    { value: "", label: "" },
     { value: "Cumpleaños", label: "Cumpleaños" },
     { value: "Boda", label: "Boda" },
     { value: "Primera Comunion", label: "Primera Comunion" }
@@ -33,6 +34,7 @@ eventosContainer.classList.add("eventos-container");
     event.preventDefault();
   
     // Obtener valores del formulario
+    const asunto = document.getElementById("asunto").value;
     const fecha = document.getElementById("fecha").value;
     const hora = document.getElementById("hora").value;
     const ubicacion = document.getElementById("ubicacion").value;
@@ -41,6 +43,7 @@ eventosContainer.classList.add("eventos-container");
   
     // Crear objeto de evento
     const evento = {
+      asunto,
       fecha,
       hora,
       ubicacion,
@@ -63,16 +66,21 @@ eventosContainer.classList.add("eventos-container");
   
     // Crear título del evento
     const titulo = document.createElement("h3");
-    titulo.textContent = "Evento Creado";
+    const primeraPropiedad = evento[Object.keys(evento)[0]];
+    titulo.textContent = primeraPropiedad;
     eventoElement.appendChild(titulo);
   
     // Crear lista de propiedades del evento
     const lista = document.createElement("ul");
   
+    let isFirstProperty = true;
     for (const propiedad in evento) {
-      const item = document.createElement("li");
-      item.textContent = `${propiedad}: ${evento[propiedad]}`;
-      lista.appendChild(item);
+      if (!isFirstProperty) {
+        const item = document.createElement("li");
+        item.textContent = `${propiedad}: ${evento[propiedad]}`;
+        lista.appendChild(item);
+      }
+      isFirstProperty = false;
     }
   
     eventoElement.appendChild(lista);
