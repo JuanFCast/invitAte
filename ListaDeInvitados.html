@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Invitados</title>
+</head>
+<body>
+    <h1 id="tituloLista">Lista de Invitados</h1>
+
+    <label for="nombreLista">Nombre de la Lista:</label>
+    <input type="text" id="nombreLista" required><br><br>
+
+    <button onclick="crearLista()">Crear Lista</button>
+
+    <form id="invitadosForm" style="display: none;">
+        <label for="participantes">Participantes:</label>
+        <select id="participantes" multiple>
+            <option value="Juan">Juan</option>
+            <option value="María">María</option>
+            <option value="Pedro">Pedro</option>
+            <option value="Laura">Laura</option>
+        </select><br><br>
+
+        <button type="button" onclick="agregarParticipantes()">Agregar Participantes</button>
+    </form>
+
+    <ul id="listaInvitados" style="display: none;">
+        <!-- Aquí se mostrarán los participantes agregados -->
+    </ul>
+
+    <script>
+        // Función para crear la lista de invitados
+        function crearLista() {
+            var nombreLista = document.getElementById("nombreLista").value;
+            document.getElementById("invitadosForm").style.display = "block";
+            document.getElementById("listaInvitados").style.display = "block";
+            document.getElementsByTagName("button")[0].disabled = true;
+
+            // Mostrar el nombre de la lista como título
+            document.getElementById("tituloLista").innerHTML = nombreLista;
+        }
+
+        // Función para agregar participantes a la lista
+        function agregarParticipantes() {
+            var select = document.getElementById("participantes");
+            var lista = document.getElementById("listaInvitados");
+
+            // Recorrer los elementos seleccionados y agregarlos a la lista
+            for (var i = 0; i < select.options.length; i++) {
+                var option = select.options[i];
+                if (option.selected) {
+                    var nuevoParticipante = document.createElement("li");
+                    nuevoParticipante.innerHTML = option.value;
+
+                    var botonEliminar = document.createElement("button");
+                    botonEliminar.innerHTML = "Eliminar";
+                    botonEliminar.setAttribute("onclick", "eliminarParticipante(this.parentElement)");
+                    nuevoParticipante.appendChild(botonEliminar);
+
+                    lista.appendChild(nuevoParticipante);
+                }
+            }
+
+            // Limpiar la selección del select
+            select.selectedIndex = -1;
+        }
+
+        // Función para eliminar un participante de la lista
+        function eliminarParticipante(element) {
+            var lista = document.getElementById("listaInvitados");
+            lista.removeChild(element);
+        }
+    </script>
+</body>
+</html>
