@@ -1,93 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
     <title>Lista de Invitados</title>
+    <link rel="stylesheet" type="text/css" href="ListaDeInvitadosEstilos.css">
 </head>
+
 <body>
-    <h1 id="tituloLista">Lista de Invitados</h1>
+    <div class="container">
+        <h1 id="tituloLista">Lista de Invitados</h1>
 
-    <label for="nombreLista">Nombre de la Lista:</label>
-    <input type="text" id="nombreLista" required><br><br>
+        <label for="nombreLista">Nombre de la Lista:</label>
+        <input type="text" id="nombreLista" required><br><br>
 
-    <button onclick="crearLista()">Crear Lista</button>
+        <button onclick="crearLista()">Crear Lista</button>
 
-    <form id="invitadosForm" style="display: none;">
-        <label for="participantes">Participantes:</label>
-        <select id="participantes" multiple>
-            <option value="Juan">Juan</option>
-            <option value="María">María</option>
-            <option value="Pedro">Pedro</option>
-            <option value="Laura">Laura</option>
-        </select><br><br>
+        <form id="invitadosForm" style="display: none;">
+            <label for="participantes">Participantes:</label>
+            <select id="participantes" multiple>
+                <option value="Juan">Juan</option>
+                <option value="María">María</option>
+                <option value="Pedro">Pedro</option>
+                <option value="Laura">Laura</option>
+            </select><br><br>
 
-        <button type="button" onclick="agregarParticipantes()">Agregar Participantes</button>
-    </form>
+            <button type="button" onclick="agregarParticipantes()">Agregar Participantes</button>
+        </form>
 
-    <ul id="listaInvitados" style="display: none;">
-        <!-- Aquí se mostrarán los participantes agregados -->
-    </ul>
+        <ul id="listaInvitados" style="display: none;">
+            <!-- Aquí se mostrarán los participantes agregados -->
+        </ul>
+    </div>
 
-    <script>
-        // Objeto para representar la lista de invitados
-        var listaInvitados = {
-            nombre: "",
-            participantes: [],
-
-            crear: function(nombreLista) {
-                this.nombre = nombreLista;
-                document.getElementById("invitadosForm").style.display = "block";
-                document.getElementById("listaInvitados").style.display = "block";
-                document.getElementsByTagName("button")[0].disabled = true;
-                document.getElementById("tituloLista").innerHTML = this.nombre;
-            },
-
-            agregarParticipante: function(participante) {
-                this.participantes.push(participante);
-                this.actualizarLista();
-            },
-
-            eliminarParticipante: function(index) {
-                this.participantes.splice(index, 1);
-                this.actualizarLista();
-            },
-
-            actualizarLista: function() {
-                var lista = document.getElementById("listaInvitados");
-                lista.innerHTML = "";
-
-                for (var i = 0; i < this.participantes.length; i++) {
-                    var nuevoParticipante = document.createElement("li");
-                    nuevoParticipante.innerHTML = this.participantes[i];
-
-                    var botonEliminar = document.createElement("button");
-                    botonEliminar.innerHTML = "Eliminar";
-                    botonEliminar.setAttribute("onclick", "listaInvitados.eliminarParticipante(" + i + ")");
-                    nuevoParticipante.appendChild(botonEliminar);
-
-                    lista.appendChild(nuevoParticipante);
-                }
-            }
-        };
-
-        // Función para crear la lista de invitados
-        function crearLista() {
-            var nombreLista = document.getElementById("nombreLista").value;
-            listaInvitados.crear(nombreLista);
-        }
-
-        // Función para agregar participantes a la lista
-        function agregarParticipantes() {
-            var select = document.getElementById("participantes");
-
-            for (var i = 0; i < select.options.length; i++) {
-                var option = select.options[i];
-                if (option.selected) {
-                    listaInvitados.agregarParticipante(option.value);
-                }
-            }
-
-            select.selectedIndex = -1;
-        }
-    </script>
+    <script src="ListaDeInvitados.js"></script>
 </body>
+
 </html>
