@@ -28,46 +28,65 @@
     </ul>
 
     <script>
-        // Función para crear la lista de invitados
-        function crearLista() {
-            var nombreLista = document.getElementById("nombreLista").value;
-            document.getElementById("invitadosForm").style.display = "block";
-            document.getElementById("listaInvitados").style.display = "block";
-            document.getElementsByTagName("button")[0].disabled = true;
+        // Objeto para representar la lista de invitados
+        var listaInvitados = {
+            nombre: "",
+            participantes: [],
 
-            // Mostrar el nombre de la lista como título
-            document.getElementById("tituloLista").innerHTML = nombreLista;
-        }
+            crear: function(nombreLista) {
+                this.nombre = nombreLista;
+                document.getElementById("invitadosForm").style.display = "block";
+                document.getElementById("listaInvitados").style.display = "block";
+                document.getElementsByTagName("button")[0].disabled = true;
+                document.getElementById("tituloLista").innerHTML = this.nombre;
+            },
 
-        // Función para agregar participantes a la lista
-        function agregarParticipantes() {
-            var select = document.getElementById("participantes");
-            var lista = document.getElementById("listaInvitados");
+            agregarParticipante: function(participante) {
+                this.participantes.push(participante);
+                this.actualizarLista();
+            },
 
-            // Recorrer los elementos seleccionados y agregarlos a la lista
-            for (var i = 0; i < select.options.length; i++) {
-                var option = select.options[i];
-                if (option.selected) {
+            eliminarParticipante: function(index) {
+                this.participantes.splice(index, 1);
+                this.actualizarLista();
+            },
+
+            actualizarLista: function() {
+                var lista = document.getElementById("listaInvitados");
+                lista.innerHTML = "";
+
+                for (var i = 0; i < this.participantes.length; i++) {
                     var nuevoParticipante = document.createElement("li");
-                    nuevoParticipante.innerHTML = option.value;
+                    nuevoParticipante.innerHTML = this.participantes[i];
 
                     var botonEliminar = document.createElement("button");
                     botonEliminar.innerHTML = "Eliminar";
-                    botonEliminar.setAttribute("onclick", "eliminarParticipante(this.parentElement)");
+                    botonEliminar.setAttribute("onclick", "listaInvitados.eliminarParticipante(" + i + ")");
                     nuevoParticipante.appendChild(botonEliminar);
 
                     lista.appendChild(nuevoParticipante);
                 }
             }
+        };
 
-            // Limpiar la selección del select
-            select.selectedIndex = -1;
+        // Función para crear la lista de invitados
+        function crearLista() {
+            var nombreLista = document.getElementById("nombreLista").value;
+            listaInvitados.crear(nombreLista);
         }
 
-        // Función para eliminar un participante de la lista
-        function eliminarParticipante(element) {
-            var lista = document.getElementById("listaInvitados");
-            lista.removeChild(element);
+        // Función para agregar participantes a la lista
+        function agregarParticipantes() {
+            var select = document.getElementById("participantes");
+
+            for (var i = 0; i < select.options.length; i++) {
+                var option = select.options[i];
+                if (option.selected) {
+                    listaInvitados.agregarParticipante(option.value);
+                }
+            }
+
+            select.selectedIndex = -1;
         }
     </script>
 </body>
