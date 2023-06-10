@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Asistencia</title>
+    <link rel="stylesheet" href="confirm-asist.css">
+    <script src="confirm-asist.js"></script>
+</head>
+<body>
+    <h1>Confirmar Asistencia al Evento</h1>
+
+    <div class="evento">
+        <h2>Fiesta de JuanK</h2>
+        <p>Fecha: 21 de Junio, 2023</p>
+        <p>Hora: 18:00</p>
+        <p>Ubicación: Casa de JuanK, Calle 123 #12-50</p>
+        <button onclick="confirmarAsistencia('evento1')" style="background-color: #4CAF50; color: #fff;">Confirmar Asistencia</button>
+        <button onclick="noConfirmarAsistencia('evento1')" style="background-color: #f44336; color: #fff;">No Confirmar Asistencia</button>
+        <p id="confirmar-evento1" class="confirmar">Asistencia confirmada exitosamente. Gracias por confirmar.</p>
+        <p id="noConfirmar-evento1" class="noConfirmar">No asistencia, registrada exitosamente.</p>
+    </div>
+
+    <div class="evento">
+        <h2>Matrimonio</h2>
+        <p>Fecha: 26 de Agosto, 2023</p>
+        <p>Hora: 14:00</p>
+        <p>Ubicación: Capilla La Felicidad, Avenida 456 #18-80</p>
+        <button onclick="confirmarAsistencia('evento2')" style="background-color: #4CAF50; color: #fff;">Confirmar Asistencia</button>
+        <button onclick="noConfirmarAsistencia('evento2')" style="background-color: #f44336; color: #fff;">No Confirmar Asistencia</button>
+        <p id="confirmar-evento2" class="confirmar">Asistencia confirmada exitosamente. Gracias por confirmar.</p>
+        <p id="noConfirmar-evento2" class="noConfirmar">No asistencia, registrada exitosamente.</p>
+    </div>
+
+</body>
+</html>
