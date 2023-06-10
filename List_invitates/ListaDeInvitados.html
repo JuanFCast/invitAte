@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Invitados</title>
+    <link rel="stylesheet" type="text/css" href="ListaDeInvitadosEstilos.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="tituloLista">Lista de Invitados</h1>
+
+        <label for="nombreLista">Nombre de la Lista:</label>
+        <input type="text" id="nombreLista" required><br><br>
+
+        <button onclick="crearLista()">Crear Lista</button>
+
+        <form id="invitadosForm" style="display: none;">
+            <label for="participantes">Participantes:</label>
+            <select id="participantes" multiple>
+                <option value="Juan">Juan</option>
+                <option value="María">María</option>
+                <option value="Pedro">Pedro</option>
+                <option value="Laura">Laura</option>
+            </select><br><br>
+
+            <button type="button" onclick="agregarParticipantes()">Agregar Participantes</button>
+        </form>
+
+        <ul id="listaInvitados" style="display: none;">
+            <!-- Aquí se mostrarán los participantes agregados -->
+        </ul>
+    </div>
+
+    <script src="ListaDeInvitados.js"></script>
+</body>
+
+</html>
