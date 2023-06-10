@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Asistencia</title>
+    <style>
+        #confirmar {
+            display: none;
+            color: green;
+        }
+        #noConfirmar {
+            display: none;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Confirmar Asistencia al Evento</h1>
+
+    <button onclick="confirmarAsistencia()">Confirmar Asistencia</button>
+    <button onclick="noConfirmarAsistencia()">No Confirmar Asistencia</button>
+
+    <p id="confirmar">Asistencia confirmada exitosamente. Gracias por confirmar.</p>
+    <p id="noConfirmar">No asistencia registrada exitosamente.</p>
+
+    <script>
+        function confirmarAsistencia() {
+            document.getElementById('confirmar').style.display = 'block';
+            document.getElementById('noConfirmar').style.display = 'none';
+        }
+
+        function noConfirmarAsistencia() {
+            document.getElementById('noConfirmar').style.display = 'block';
+            document.getElementById('confirmar').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
