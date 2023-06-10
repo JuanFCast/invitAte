@@ -38,6 +38,11 @@ ul {
   margin: 0;
 }
 
+.tablaEvento {
+  float: right;
+}
+
+
 li {
   margin-bottom: 10px;
 }
@@ -51,3 +56,8 @@ li {
   display: inline-block;
   margin-right: 10px;
 }
+
+.selected {
+  background-color: yellow;
+}
+

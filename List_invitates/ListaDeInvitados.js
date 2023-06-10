@@ -50,7 +50,6 @@ var listaInvitados = {
 //Objeto para guardar a los participantes que se van agregando a la lista
 var participantesAgregados = [];
 
-
 // Función para crear la lista de invitados
 function crearLista() {
     var nombreLista = document.getElementById("nombreLista").value;
@@ -91,3 +90,20 @@ function enviarInvitaciones() {
 
     alert("Se han enviado las invitaciones");
 }
+
+// Obtén una referencia a todas las celdas de la tabla
+var celdas = document.getElementsByClassName("itemEvento");
+
+// Agrega el evento de clic a cada celda
+Array.from(celdas).forEach(function(celda) {
+    celda.addEventListener("click", function() {
+        // Remueve la clase "selected" de todas las celdas
+        Array.from(celdas).forEach(function(c) {
+            c.classList.remove("selected");
+        });
+
+        // Agrega la clase "selected" a la celda clickeada
+        this.classList.add("selected");
+    });
+});
+

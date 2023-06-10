@@ -27,31 +27,32 @@
 
             <div class="buttons-container">
                 <button type="button" onclick="agregarParticipantes()">Agregar Participantes</button>
-                <button id="btnEnviarInvitaciones" onclick="enviarInvitaciones()" style="display: none;">Enviar Invitaciones</button>
+                <button id="btnEnviarInvitaciones" onclick="enviarInvitaciones()" style="display: none;">Enviar
+                    Invitaciones</button>
             </div>
-            
+
         </form>
 
         <ul id="listaInvitados" style="display: none;">
             <!-- Aquí se mostrarán los participantes agregados -->
         </ul>
 
-        <table id="tablaEvento" style="display: none;">
-            <thead>
-                <tr>
-                    <th>Evento</th>
-                    <th>Lista de Invitados</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td id="nombreEvento"></td>
-                    <td id="nombreListaEvento"></td>
-                </tr>
-            </tbody>
-        </table>
-
     </div>
+
+    <table id="tablaEvento" class="tablaEvento">
+        <thead>
+            <tr>
+                <th>Eventos</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTablaEvento">
+            <tr>
+                <td class="itemEvento">Fiesta De Juank</td>
+            </tr>
+        </tbody>
+    </table>
+
+
 
     <script src="ListaDeInvitados.js"></script>
 </body>
