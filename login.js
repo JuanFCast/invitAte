@@ -9,7 +9,9 @@ function login() {
     // Comprobamos si el email y la contraseña ingresados coinciden con los registrados.
     if(email === registeredEmail && password === registeredPassword) {
         alert('Ingreso exitoso');
-        // Aquí deberías redirigir al usuario a su página de inicio o similar
+
+        // Redirige al usuario a la página homepage.html
+        window.location.href = "homepage.html";
     } else {
         alert('Correo o contraseña incorrecta');
     }
