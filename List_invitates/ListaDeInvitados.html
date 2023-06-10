@@ -25,12 +25,32 @@
                 <option value="Laura">Laura</option>
             </select><br><br>
 
-            <button type="button" onclick="agregarParticipantes()">Agregar Participantes</button>
+            <div class="buttons-container">
+                <button type="button" onclick="agregarParticipantes()">Agregar Participantes</button>
+                <button id="btnEnviarInvitaciones" onclick="enviarInvitaciones()" style="display: none;">Enviar Invitaciones</button>
+            </div>
+            
         </form>
 
         <ul id="listaInvitados" style="display: none;">
             <!-- Aquí se mostrarán los participantes agregados -->
         </ul>
+
+        <table id="tablaEvento" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>Lista de Invitados</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="nombreEvento"></td>
+                    <td id="nombreListaEvento"></td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 
     <script src="ListaDeInvitados.js"></script>

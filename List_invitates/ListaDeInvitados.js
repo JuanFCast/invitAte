@@ -55,6 +55,13 @@ var participantesAgregados = [];
 function crearLista() {
     var nombreLista = document.getElementById("nombreLista").value;
     listaInvitados.crear(nombreLista);
+
+    // Mostrar el formulario y la lista de invitados
+    document.getElementById("invitadosForm").style.display = "block";
+    document.getElementById("listaInvitados").style.display = "block";
+
+    // Mostrar el botón de enviar invitaciones
+    document.getElementById("btnEnviarInvitaciones").style.display = "block";
 }
 
 // Función para agregar participantes a la lista
@@ -77,4 +84,10 @@ function agregarParticipantes() {
     }
 
     select.selectedIndex = -1;
+}
+
+function enviarInvitaciones() {
+    // Aquí puedes agregar la lógica para enviar las invitaciones
+
+    alert("Se han enviado las invitaciones");
 }
